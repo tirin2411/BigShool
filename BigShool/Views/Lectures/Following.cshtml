@@ -6,12 +6,14 @@
 
 <h2>Following</h2>
 
-<ul class="follow">
+<ul class="course">
     @foreach (var following in Model)
     {
         <li>
-            <div class="name">
-                @following.Name
+            <div>
+                <div>
+                    @following.Name
+                </div>
             </div>
         </li>
     }
