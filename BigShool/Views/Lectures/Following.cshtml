@@ -1,0 +1,18 @@
+﻿@model List<BigShool.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Following";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Following</h2>
+
+<ul class="follow">
+    @foreach (var following in Model)
+    {
+        <li>
+            <div class="name">
+                @following.Name
+            </div>
+        </li>
+    }
+</ul>
