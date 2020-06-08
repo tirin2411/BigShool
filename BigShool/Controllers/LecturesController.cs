@@ -3,6 +3,7 @@ using BigShool.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,14 +27,15 @@ namespace BigShool.Controllers
 
             var follow = _dbContext.Followings
                 .Where(a => a.FollowerId == userId)
+                .Include(l => l.Follower)
                 .Select(a => a.Followee)
                 .ToList();
-            //var viewModel = new FollowerViewModel
-            //{
-            //    Upcomming = follow,
-            //    ShowAction = User.Identity.IsAuthenticated
-            //};
-            return View(follow);
+            var viewModel = new FollowerViewModel
+            {
+                Upcomming = follow,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
     }
 }

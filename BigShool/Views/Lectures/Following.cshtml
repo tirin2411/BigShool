@@ -1,4 +1,5 @@
-﻿@model List<BigShool.Models.ApplicationUser>
+﻿@model List<BigShool.ViewModels.FollowerViewModel>
+
 @{
     ViewBag.Title = "Following";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,10 +12,38 @@
     {
         <li>
             <div>
-                <div>
-                    @following.Name
-                </div>
+                @following.Name
+            </div>
+            <div class="action">
+                <a href="#" class="js-cancel-following" data-user-id="@following.Followees">Cancel</a>
             </div>
         </li>
     }
 </ul>
+
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".js-cancel-following").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Are you sure to cancel?",
+                    function () {
+                        $.ajax({
+                            url: "/api/followings/" + link.attr("data-user-id"),
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                            })
+                            .fail(function () {
+                                alert("Something failed!");
+                            });
+                    });
+            });
+        });
+    </script>
+}

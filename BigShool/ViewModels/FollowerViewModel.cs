@@ -8,7 +8,7 @@ namespace BigShool.ViewModels
 {
     public class FollowerViewModel
     {
-        public IEnumerable<Following> Upcomming { get; set; }
+        public IEnumerable<ApplicationUser> Upcomming { get; set; }
         public bool ShowAction { get; set; }
     }
 }

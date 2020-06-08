@@ -19,5 +19,6 @@ namespace BigShool.Models
 
         public ApplicationUser Follower { get; set; }
         public ApplicationUser Followee { get; set; }
+        public bool IsCanceled { get; set; }
     }
 }

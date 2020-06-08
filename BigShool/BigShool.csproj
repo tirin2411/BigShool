@@ -180,6 +180,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CoursesController.cs" />
+    <Compile Include="Controllers\Api\FollowingsController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
@@ -218,6 +219,10 @@
     <Compile Include="Migrations\202005311534064_AddIsCanceledColumnToCourse.cs" />
     <Compile Include="Migrations\202005311534064_AddIsCanceledColumnToCourse.Designer.cs">
       <DependentUpon>202005311534064_AddIsCanceledColumnToCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006080801379_AddIsCanceledColumnToFollow.cs" />
+    <Compile Include="Migrations\202006080801379_AddIsCanceledColumnToFollow.Designer.cs">
+      <DependentUpon>202006080801379_AddIsCanceledColumnToFollow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -340,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005311534064_AddIsCanceledColumnToCourse.resx">
       <DependentUpon>202005311534064_AddIsCanceledColumnToCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006080801379_AddIsCanceledColumnToFollow.resx">
+      <DependentUpon>202006080801379_AddIsCanceledColumnToFollow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
