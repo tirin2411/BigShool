@@ -28,14 +28,17 @@ namespace BigShool.Controllers
             var follow = _dbContext.Followings
                 .Where(a => a.FollowerId == userId)
                 .Include(l => l.Follower)
+                .Where(c => c.IsCanceled == false)
+                //.Include(l => l.Followee)
                 .Select(a => a.Followee)
+                //.Select(u => u.ApplicationUser)
                 .ToList();
-            var viewModel = new FollowerViewModel
-            {
-                Upcomming = follow,
-                ShowAction = User.Identity.IsAuthenticated
-            };
-            return View(viewModel);
+            //var viewModel = new FollowerViewModel
+            //{
+            //    Upcomming = follow,
+            //    ShowAction = User.Identity.IsAuthenticated
+            //};
+            return View(follow);
         }
     }
 }

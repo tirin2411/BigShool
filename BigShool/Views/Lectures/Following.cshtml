@@ -1,4 +1,4 @@
-﻿@model List<BigShool.ViewModels.FollowerViewModel>
+﻿@model List<BigShool.Models.ApplicationUser>
 
 @{
     ViewBag.Title = "Following";
@@ -8,14 +8,14 @@
 <h2>Following</h2>
 
 <ul class="course">
-    @foreach (var following in Model)
+    @foreach (var i in Model)
     {
         <li>
             <div>
-                @following.Name
+                @i.Name
             </div>
             <div class="action">
-                <a href="#" class="js-cancel-following" data-user-id="@following.Followees">Cancel</a>
+                <a href="#" class="js-cancel-following" data-user-id="@i.Id.ToString()">Cancel</a>
             </div>
         </li>
     }

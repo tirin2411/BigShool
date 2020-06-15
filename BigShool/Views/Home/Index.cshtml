@@ -54,11 +54,12 @@
             });
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("api/followings", { followeeId: button.attr("data-user-id") })
+                $.post("/api/followings", { FolloweeId: button.attr("data-user-id") })
                     .done(function () {
                         button.text("Following");
                     })
-                    .fail(function () {
+                    .fail(function (e) {
+                        console.log(e);
                         alert("Something failed!");
                     });
             });
