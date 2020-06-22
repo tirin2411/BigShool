@@ -20,15 +20,47 @@
             <div class="details">
                 <span class="lecturer">
                     @course.Lecturer.Name
-                    @if (Model.ShowAction)
-                    {
-                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
-                    }
+                    @*@if (Model.ShowAction)
+                        {
+                            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                        }*@
                 </span>
                 <span class="category">
                     @course.Category.Name
                 </span>
+                @if (Model.ShowAction)
+                {
+                    <button data-courses-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Cancel</button>
+                }
             </div>
         </li>
     }
 </ul>
+
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                e.preventDefault();
+                var link = $(e.target);
+                bootbox.confirm("Are you sure to cancel?",
+                    function () {
+                        $.ajax({
+                            url: "/api/attendances/" + link.attr("data-courses-id"),
+                            method: "DELETE"
+                        })
+                            .done(function () {
+                                link.parents("li").fadeOut(function () {
+                                    $(this).remove();
+                                });
+                                alert("Cancel success.");
+                            })
+                            .fail(function () {
+                                alert("Something failed!");
+                            });
+                    });
+            });
+        });
+    </script>
+}
